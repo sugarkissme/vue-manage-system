@@ -1,16 +1,12 @@
 module.exports = {
-    baseUrl: './',
+    publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
     assetsDir: 'static',
     productionSourceMap: false,
-    // devServer: {
-    //     proxy: {
-    //         '/api':{
-    //             target:'http://jsonplaceholder.typicode.com',
-    //             changeOrigin:true,
-    //             pathRewrite:{
-    //                 '/api':''
-    //             }
-    //         }
-    //     }
-    // }
+    configureWebpack: {
+        externals: {
+            'AMap': 'AMap', // 高德地图配置
+            'Loca': 'Loca',
+            'AMapUI': 'AMapUI'
+        }
+    },
 }
